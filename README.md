@@ -24,8 +24,10 @@ Seus pilares são:
 - **Transformação cultural** – construção de ambientes seguros e inclusivos.  
 
 📘 Saiba mais:
-- [MPSP – Pacto Ninguém se Cala](https://www.mpsp.mp.br/portal/page/portal/ViolenciaDomestica/Pacto-Ninguem-Se-Cala)  
-- [Cartilha oficial do Pacto (PDF)](https://www.mpsp.mp.br/portal/page/portal/ViolenciaDomestica/Pacto%20Ninguem%20Se%20Cala%20-%20Cartilha.pdf)
+- [MPSP – Pacto Ninguém se Cala](https://www.mpsp.mp.br/pacto-ninguem-se-cala)  
+- [Cartilha oficial do Pacto (PDF)](https://www.al.sp.gov.br/arquivos/transparencia/pacto_ninguem_se_cala.pdf)
+
+> 🔎 **Nota:** As fontes acima foram verificadas em **25/10/2025** e estavam ativas e atualizadas nessa data. Mudanças podem ter ocorrido desde então nos sites institucionais.
 
 ---
 
@@ -69,54 +71,6 @@ O arquivo `eva-config.yaml` serve como **guia técnico para integrar a EVA a um 
 - Facilitar a reprodutibilidade em diferentes plataformas.  
 - Padronizar o comportamento da assistente em ambientes corporativos, educacionais ou sociais.
 
-### ⚙️ Como utilizar
-
-| Ambiente | Uso recomendado |
-|-----------|----------------|
-| **Azure OpenAI / AI Search** | Carregue o `eva-config.yaml` como referência de metadados e conecte as URLs listadas como *Data Sources*. Use o conteúdo de `eva-systemprompt.md` no campo `system`. |
-| **Microsoft Copilot Studio** | Insira o conteúdo de `eva-systemprompt.md` no System Prompt e cadastre as URLs de fontes como base de conhecimento conectada. |
-| **LangChain / LlamaIndex** | Parseie o YAML e injete suas fontes no pipeline RAG. Configure embeddings com FAISS, Chroma ou Azure Cognitive Search. |
-| **Ambientes locais (Python, Node.js, etc.)** | Carregue as configurações com: `config = yaml.safe_load(open("eva-config.yaml"))` e use-as no fluxo de inicialização do agente. |
-
----
-
-## 🏗️ Como usar o prompt na construção de agentes internos
-
-A **EVA** pode ser usada como base para criar **assistentes corporativos** que apoiem políticas de diversidade, inclusão e segurança psicológica.
-
-### 💼 Exemplos práticos
-1. **Copilot Studio (Microsoft Teams)**  
-   - Cole o conteúdo de `eva-systemprompt.md` no campo de *System Instructions*.  
-   - Configure gatilhos como “preciso conversar”, “não me sinto segura”, “quero relatar algo”.  
-   - Conecte o `eva-config.yaml` como base de conhecimento.  
-
-2. **Azure OpenAI / API interna**  
-   - Use o prompt como `system` e o YAML para definir as fontes e parâmetros RAG.  
-   - Ideal para portais internos de RH, canais de denúncia ou programas de bem-estar.  
-
-3. **Plataformas de Chat Interno (Slack, Teams, Intranet)**  
-   - Utilize o `eva-config.yaml` para alimentar a camada de contexto e segurança.  
-   - Permita consultas às fontes oficiais antes de gerar respostas.  
-
----
-
-## 🧍‍♀️ Uso pessoal / individual
-
-Se você quiser conversar com a **EVA** sem integração técnica:
-
-1. Abra um chat em qualquer IA (ChatGPT, Gemini, Claude, Copilot etc.).  
-2. Copie **todo o conteúdo de `eva-systemprompt.md`**.  
-3. Cole no início da conversa.  
-4. Fale naturalmente:
-   - “EVA, posso desabafar sobre algo que aconteceu comigo?”  
-   - “Não sei se o que vivi foi assédio, pode me ajudar?”  
-   - “Como posso buscar ajuda de forma segura?”  
-
-A EVA responderá com empatia, sigilo e orientação baseada em fontes oficiais.
-
-> ⚠️ **Importante:** EVA não substitui atendimento psicológico, jurídico ou policial.  
-> Em casos de emergência, ligue **180** (Central de Atendimento à Mulher) ou **190** (em risco imediato).
-
 ---
 
 ## ⚖️ Licença
@@ -134,23 +88,14 @@ Embora **a citação dos criadores não seja obrigatória**, ela é **fortemente
 
 ---
 
-## 💜 Como contribuir
-
-1. Faça um fork do repositório.  
-2. Adapte o prompt ou o YAML conforme seu contexto (mantendo a ética e o foco em acolhimento).  
-3. Envie melhorias via *pull request*.  
-
-Toda contribuição é bem-vinda — especialmente aquelas que fortalecem o **uso responsável da IA em contextos de vulnerabilidade**.
-
----
-
 ## 📚 Fontes oficiais e referências
 
-- [Ministério Público do Estado de São Paulo – Pacto Ninguém se Cala](https://www.mpsp.mp.br/portal/page/portal/ViolenciaDomestica/Pacto-Ninguem-Se-Cala)  
-- [Cartilha oficial – Pacto Ninguém se Cala (PDF)](https://www.mpsp.mp.br/portal/page/portal/ViolenciaDomestica/Pacto%20Ninguem%20Se%20Cala%20-%20Cartilha.pdf)  
-- [Central de Atendimento à Mulher – Governo Federal (180)](https://www.gov.br/centraldamulher)  
-- [Ministério das Mulheres – Enfrentamento à Violência](https://www.gov.br/mdh/pt-br/assuntos/violencia-contra-as-mulheres)  
-- [Conselho Nacional do Ministério Público – Violência Doméstica e Familiar](https://www.cnmp.mp.br/portal/violencia-domestica-e-familiar)
+- [MPSP – Pacto Ninguém se Cala](https://www.mpsp.mp.br/pacto-ninguem-se-cala)  
+- [Cartilha oficial – Pacto Ninguém se Cala (PDF)](https://www.al.sp.gov.br/arquivos/transparencia/pacto_ninguem_se_cala.pdf)  
+- [Ligue 180 – Central de Atendimento à Mulher](https://www.gov.br/mulheres/pt-br/ligue180)  
+- [Serviço – Denunciar e buscar ajuda a vítimas de violência](https://www.gov.br/pt-br/servicos/denunciar-e-buscar-ajuda-a-vitimas-de-violencia-contra-mulheres)
+
+> 🔎 **Fontes verificadas em 25/10/2025.** Alterações nos sites oficiais podem ocorrer com o tempo.
 
 ---
 
