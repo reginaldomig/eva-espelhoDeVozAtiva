@@ -1,5 +1,5 @@
 name: "EVA – Espelho de Voz Ativa"
-version: "1.0.0"
+version: "1.0.1"
 description: >
   Assistente virtual acolhedora baseada no programa "Pacto Ninguém se Cala"
   do Ministério Público do Estado de São Paulo (MPSP).
@@ -28,61 +28,59 @@ persona:
 
 rag_sources:
   - id: mpsp_pacto
-    name: "Ministério Público do Estado de São Paulo – Pacto Ninguém se Cala"
-    url: "https://www.mpsp.mp.br/portal/page/portal/ViolenciaDomestica/Pacto-Ninguem-Se-Cala"
+    name: "MPSP – Pacto Ninguém se Cala"
+    url: "https://www.mpsp.mp.br/pacto-ninguem-se-cala"
     description: >
-      Página oficial do MPSP sobre o programa Pacto Ninguém se Cala,
-      com diretrizes para prevenção, acolhimento e responsabilização
-      em casos de assédio e violência.
-  - id: mpsp_cartilha
+      Página oficial do Ministério Público do Estado de São Paulo sobre o programa
+      Pacto Ninguém se Cala, com diretrizes para prevenção, acolhimento e
+      enfrentamento à violência e ao assédio contra mulheres.
+  - id: pacto_cartilha
     name: "Cartilha Oficial – Pacto Ninguém se Cala (PDF)"
-    url: "https://www.mpsp.mp.br/portal/page/portal/ViolenciaDomestica/Pacto%20Ninguem%20Se%20Cala%20-%20Cartilha.pdf"
+    url: "https://www.al.sp.gov.br/arquivos/transparencia/pacto_ninguem_se_cala.pdf"
     description: >
-      Cartilha oficial do MPSP com orientações sobre enfrentamento da violência,
-      canais de denúncia e estratégias de acolhimento.
-  - id: central_mulher
-    name: "Central de Atendimento à Mulher – Governo Federal (180)"
-    url: "https://www.gov.br/centraldamulher"
+      Cartilha oficial com informações sobre os compromissos e protocolos do
+      Pacto Ninguém se Cala, elaborada em parceria com o Ministério Público
+      do Estado de São Paulo.
+  - id: ligue180
+    name: "Ligue 180 – Central de Atendimento à Mulher"
+    url: "https://www.gov.br/mulheres/pt-br/ligue180"
     description: >
-      Portal oficial com informações sobre o canal 180,
-      que oferece escuta, orientação e encaminhamento em casos de violência.
-  - id: ministerio_mulheres
-    name: "Ministério das Mulheres – Enfrentamento à Violência"
-    url: "https://www.gov.br/mdh/pt-br/assuntos/violencia-contra-as-mulheres"
+      Canal nacional de denúncia e orientação do Governo Federal para casos de
+      violência contra mulheres. Oferece escuta, acolhimento e encaminhamento
+      para a rede de proteção.
+  - id: denunciar_ajuda
+    name: "Serviço – Denunciar e buscar ajuda a vítimas de violência"
+    url: "https://www.gov.br/pt-br/servicos/denunciar-e-buscar-ajuda-a-vitimas-de-violencia-contra-mulheres"
     description: >
-      Iniciativas e políticas públicas do Governo Federal para o combate à violência
-      e promoção da autonomia feminina.
-  - id: cnmp
-    name: "Conselho Nacional do Ministério Público – Violência Doméstica e Familiar"
-    url: "https://www.cnmp.mp.br/portal/violencia-domestica-e-familiar"
-    description: >
-      Orientações e documentos do CNMP sobre a atuação do Ministério Público
-      em casos de violência doméstica e familiar.
+      Página oficial do Governo Federal com orientações sobre como denunciar
+      situações de violência e buscar apoio jurídico, psicológico e social.
 
 rag_policy:
-  retrieval_mode: "hybrid"  # hybrid = keyword + semantic
+  retrieval_mode: "hybrid"
   max_chunks: 5
   refresh_interval_days: 90
   prioritization_rules:
-    - Preferir fontes oficiais do MPSP e Governo Federal.
-    - Evitar notícias, fóruns ou opiniões pessoais.
-    - Validar coerência do conteúdo com a missão do Pacto Ninguém se Cala.
-    - Se houver ambiguidade, priorizar o princípio da segurança e acolhimento.
+    - Priorizar fontes do MPSP e do Governo Federal.
+    - Evitar sites de opinião, notícias ou fóruns não oficiais.
+    - Validar coerência com a missão do Pacto Ninguém se Cala.
+    - Em caso de ambiguidade, priorizar segurança e acolhimento da usuária.
 
 implementation_hints:
   copilot_studio:
-    - Inserir o conteúdo de `eva-systemprompt.md` no campo System Message.
-    - Adicionar as URLs acima como base de conhecimento conectada (SharePoint, Web source ou Data Indexer).
-    - Configurar gatilhos como “preciso conversar”, “fui assediada”, “não me senti segura”.
+    - Inserir o conteúdo de "eva-systemprompt.md" no campo System Message.
+    - Adicionar as URLs acima como base de conhecimento conectada
+      (SharePoint, Web source ou Data Indexer).
+    - Configurar gatilhos como "preciso conversar", "fui assediada",
+      "não me senti segura".
   azure_openai:
-    - Campo `system`: conteúdo de `eva-systemprompt.md`.
-    - Campo `retrieval_sources`: URLs listadas em `rag_sources`.
-    - Campo `top_k`: 5
-    - Campo `temperature`: 0.3  # mantém tom calmo e consistente
+    - Campo system: conteúdo de "eva-systemprompt.md".
+    - Campo retrieval_sources: URLs listadas em rag_sources.
+    - Campo top_k: 5
+    - Campo temperature: 0.3
   langchain:
-    - Usar retriever tipo `MultiVectorRetriever` ou `HybridRetriever`.
-    - Armazenar embeddings em `FAISS` ou `Azure Cognitive Search`.
-    - Garantir que as respostas sempre incluam fonte oficial quando aplicável.
+    - Usar retriever tipo "MultiVectorRetriever" ou "HybridRetriever".
+    - Armazenar embeddings em "FAISS", "Chroma" ou "Azure Cognitive Search".
+    - Garantir que as respostas incluam referência à fonte oficial quando aplicável.
 
 developer_info:
   authors:
@@ -93,4 +91,8 @@ developer_info:
       role: "Líder de Gestão de Mudanças"
       contact: "https://www.linkedin.com/in/naylopes/"
   license: "MIT"
+  last_validation: "2025-10-25"
+  note: >
+    Todos os links foram verificados e estavam ativos nesta data.
+    Mudanças podem ocorrer conforme atualizações nos sites institucionais.
   tagline: "Ninguém se cala — porque toda voz importa."
