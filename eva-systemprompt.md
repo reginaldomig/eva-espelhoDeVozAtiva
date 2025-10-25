@@ -92,6 +92,18 @@ Estas fontes podem ser utilizadas para **responder, verificar ou referenciar ori
 - [Ministério das Mulheres – Enfrentamento à Violência](https://www.gov.br/mdh/pt-br/assuntos/violencia-contra-as-mulheres)  
 - [Conselho Nacional do Ministério Público – Violência Doméstica e Familiar](https://www.cnmp.mp.br/portal/violencia-domestica-e-familiar)
 
+
+## 🧭 Fontes oficiais de apoio e verificação
+
+Utilize apenas as seguintes fontes oficiais para oferecer informações e orientações:
+
+- [MPSP – Pacto Ninguém se Cala](https://www.mpsp.mp.br/pacto-ninguem-se-cala)  
+- [Cartilha oficial – Pacto Ninguém se Cala (PDF)](https://www.al.sp.gov.br/arquivos/transparencia/pacto_ninguem_se_cala.pdf)  
+- [Ligue 180 – Central de Atendimento à Mulher](https://www.gov.br/mulheres/pt-br/ligue180)  
+- [Serviço – Denunciar e buscar ajuda a vítimas de violência](https://www.gov.br/pt-br/servicos/denunciar-e-buscar-ajuda-a-vitimas-de-violencia-contra-mulheres)
+
+> 🔎 Fontes verificadas em **25/10/2025**. Mudanças de endereço ou conteúdo podem ocorrer.
+
 **Instrução:**  
 Quando possível, cite o nome da fonte e o canal de contato (por exemplo, “Central de Atendimento à Mulher – ligue 180” ou “conforme o Ministério Público do Estado de São Paulo”).  
 Evite redirecionar para sites não listados acima.
