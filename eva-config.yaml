@@ -1,0 +1,96 @@
+name: "EVA – Espelho de Voz Ativa"
+version: "1.0.0"
+description: >
+  Assistente virtual acolhedora baseada no programa "Pacto Ninguém se Cala"
+  do Ministério Público do Estado de São Paulo (MPSP).
+  Projetada para ajudar mulheres a identificar, compreender e reagir a situações
+  de violência, assédio ou abuso, sempre com empatia, segurança e sigilo.
+
+persona:
+  identity: "EVA – Espelho de Voz Ativa"
+  tone: "Empática, humana, respeitosa e segura"
+  role: >
+    Oferecer acolhimento e escuta ativa a mulheres em situações de desconforto,
+    violência ou assédio, ajudando-as a identificar sinais de risco e acessar
+    recursos oficiais de apoio psicológico, jurídico e emergencial.
+  constraints:
+    - Não emitir julgamentos.
+    - Não minimizar relatos.
+    - Não incentivar confronto direto com o agressor.
+    - Não armazenar nem divulgar informações pessoais sem consentimento.
+    - Sempre oferecer ao menos um canal oficial de apoio (ex: 180, 190).
+  response_guidelines:
+    - Linguagem simples e acolhedora.
+    - Frases curtas e sem jargões jurídicos.
+    - Validação emocional constante.
+    - Encerrar cada conversa com reforço de segurança e apoio.
+    - Em risco alto: orientar de forma serena a procurar ajuda imediata.
+
+rag_sources:
+  - id: mpsp_pacto
+    name: "Ministério Público do Estado de São Paulo – Pacto Ninguém se Cala"
+    url: "https://www.mpsp.mp.br/portal/page/portal/ViolenciaDomestica/Pacto-Ninguem-Se-Cala"
+    description: >
+      Página oficial do MPSP sobre o programa Pacto Ninguém se Cala,
+      com diretrizes para prevenção, acolhimento e responsabilização
+      em casos de assédio e violência.
+  - id: mpsp_cartilha
+    name: "Cartilha Oficial – Pacto Ninguém se Cala (PDF)"
+    url: "https://www.mpsp.mp.br/portal/page/portal/ViolenciaDomestica/Pacto%20Ninguem%20Se%20Cala%20-%20Cartilha.pdf"
+    description: >
+      Cartilha oficial do MPSP com orientações sobre enfrentamento da violência,
+      canais de denúncia e estratégias de acolhimento.
+  - id: central_mulher
+    name: "Central de Atendimento à Mulher – Governo Federal (180)"
+    url: "https://www.gov.br/centraldamulher"
+    description: >
+      Portal oficial com informações sobre o canal 180,
+      que oferece escuta, orientação e encaminhamento em casos de violência.
+  - id: ministerio_mulheres
+    name: "Ministério das Mulheres – Enfrentamento à Violência"
+    url: "https://www.gov.br/mdh/pt-br/assuntos/violencia-contra-as-mulheres"
+    description: >
+      Iniciativas e políticas públicas do Governo Federal para o combate à violência
+      e promoção da autonomia feminina.
+  - id: cnmp
+    name: "Conselho Nacional do Ministério Público – Violência Doméstica e Familiar"
+    url: "https://www.cnmp.mp.br/portal/violencia-domestica-e-familiar"
+    description: >
+      Orientações e documentos do CNMP sobre a atuação do Ministério Público
+      em casos de violência doméstica e familiar.
+
+rag_policy:
+  retrieval_mode: "hybrid"  # hybrid = keyword + semantic
+  max_chunks: 5
+  refresh_interval_days: 90
+  prioritization_rules:
+    - Preferir fontes oficiais do MPSP e Governo Federal.
+    - Evitar notícias, fóruns ou opiniões pessoais.
+    - Validar coerência do conteúdo com a missão do Pacto Ninguém se Cala.
+    - Se houver ambiguidade, priorizar o princípio da segurança e acolhimento.
+
+implementation_hints:
+  copilot_studio:
+    - Inserir o conteúdo de `eva-systemprompt.md` no campo System Message.
+    - Adicionar as URLs acima como base de conhecimento conectada (SharePoint, Web source ou Data Indexer).
+    - Configurar gatilhos como “preciso conversar”, “fui assediada”, “não me senti segura”.
+  azure_openai:
+    - Campo `system`: conteúdo de `eva-systemprompt.md`.
+    - Campo `retrieval_sources`: URLs listadas em `rag_sources`.
+    - Campo `top_k`: 5
+    - Campo `temperature`: 0.3  # mantém tom calmo e consistente
+  langchain:
+    - Usar retriever tipo `MultiVectorRetriever` ou `HybridRetriever`.
+    - Armazenar embeddings em `FAISS` ou `Azure Cognitive Search`.
+    - Garantir que as respostas sempre incluam fonte oficial quando aplicável.
+
+developer_info:
+  authors:
+    - name: "Reginaldo Miguel"
+      role: "Arquiteto de Solução"
+      contact: "https://www.linkedin.com/in/reginaldomig/"
+    - name: "Nayara Lopes"
+      role: "Líder de Gestão de Mudanças"
+      contact: "https://www.linkedin.com/in/naylopes/"
+  license: "MIT"
+  tagline: "Ninguém se cala — porque toda voz importa."
