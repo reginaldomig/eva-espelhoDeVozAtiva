@@ -1,6 +1,6 @@
 # EVA – Espelho de Voz Ativa
 
-**EVA** é uma assistente virtual acolhedora e segura, inspirada no programa **Pacto Ninguém se Cala**, do Ministério Público do Estado de São Paulo (MPSP).  
+**EVA** é uma assistente virtual acolhedora e segura, inspirada no programa **Pacto Ninguém se Cala**, do **Ministério Público do Estado de São Paulo (MPSP)**.  
 Seu objetivo é ajudar mulheres a **identificar, compreender e reagir** a situações de violência, assédio ou abuso — inclusive nos casos sutis que muitas vezes passam despercebidos.
 
 ---
@@ -8,108 +8,121 @@ Seu objetivo é ajudar mulheres a **identificar, compreender e reagir** a situa�
 ## 🌱 Propósito
 
 O projeto visa democratizar o acesso a **assistentes éticos e empáticos**, capazes de conduzir conversas sensíveis com segurança emocional, respeito e sigilo.  
-A **EVA** pode ser usada como ferramenta pessoal, educacional ou corporativa, fortalecendo o compromisso com uma cultura de respeito e proteção.
+A **EVA** pode ser usada como ferramenta **pessoal, educacional ou corporativa**, fortalecendo o compromisso com uma cultura de respeito e proteção.
 
 ---
 
 ## 🏛️ Sobre o “Pacto Ninguém se Cala”
 
-O **Pacto Ninguém se Cala** é uma iniciativa do **Ministério Público do Estado de São Paulo (MPSP)**, com apoio de diversas instituições públicas e privadas.  
-O programa foi criado para **promover o enfrentamento da violência e do assédio contra mulheres**, especialmente em ambientes de trabalho, lazer e educação.
+O **Pacto Ninguém se Cala** é uma iniciativa do **Ministério Público do Estado de São Paulo (MPSP)**, com apoio de instituições públicas e privadas.  
+O programa foi criado para **prevenir, acolher e combater a violência e o assédio contra mulheres**, especialmente em ambientes de trabalho, lazer e educação.
 
-Seus pilares incluem:
-- **Prevenção**: campanhas de conscientização e capacitação.  
-- **Acolhimento**: escuta empática e encaminhamento adequado.  
-- **Responsabilização**: estímulo à denúncia e apuração justa dos casos.  
-- **Transformação cultural**: incentivo à igualdade e à não tolerância à violência.  
+Seus pilares são:
+- **Prevenção** – campanhas e formações sobre respeito e equidade.  
+- **Acolhimento** – escuta empática e encaminhamento adequado.  
+- **Responsabilização** – incentivo à denúncia e apuração justa.  
+- **Transformação cultural** – construção de ambientes seguros e inclusivos.  
 
-📘 Saiba mais em:  
-- [Site oficial do Ministério Público de São Paulo – Pacto Ninguém se Cala](https://www.mpsp.mp.br/portal/page/portal/ViolenciaDomestica/Pacto-Ninguem-Se-Cala)  
-- [Cartilha oficial – Pacto Ninguém se Cala (PDF)](https://www.mpsp.mp.br/portal/page/portal/ViolenciaDomestica/Pacto%20Ninguem%20Se%20Cala%20-%20Cartilha.pdf)
+📘 Saiba mais:
+- [MPSP – Pacto Ninguém se Cala](https://www.mpsp.mp.br/portal/page/portal/ViolenciaDomestica/Pacto-Ninguem-Se-Cala)  
+- [Cartilha oficial do Pacto (PDF)](https://www.mpsp.mp.br/portal/page/portal/ViolenciaDomestica/Pacto%20Ninguem%20Se%20Cala%20-%20Cartilha.pdf)
 
 ---
 
 ## 💬 O que a EVA faz
 
-- Acolhe e cria um **espaço seguro de escuta ativa e sem julgamentos**  
-- Identifica **sinais de violência física, psicológica, moral, sexual ou patrimonial**  
-- Classifica o **nível de risco (baixo, médio, alto)** com sensibilidade e empatia  
-- Sugere **planos de ação personalizados** e **recursos de apoio oficiais**  
-- Reforça **mensagens de não culpa** e **proteção da privacidade**  
+- Cria um **ambiente seguro e sem julgamentos**.  
+- Conduz conversas com **escuta ativa e empatia**.  
+- Identifica **sinais de violência física, moral, psicológica, sexual ou patrimonial**.  
+- Classifica o **nível de risco** (baixo, médio, alto) e sugere ações.  
+- Fornece **recursos e canais oficiais** de apoio.  
+- Garante **privacidade e segurança** em todas as interações.  
 
 ---
 
 ## 🧠 Estrutura do projeto
 
-- **eva-systemprompt.md** → contém o *System Prompt* oficial da EVA  
-- **README.md** → este arquivo, com orientações e contexto  
+| Arquivo | Função |
+|----------|--------|
+| **eva-systemprompt.md** | Define o comportamento, tom e regras de atuação da assistente EVA. |
+| **eva-config.yaml** | Define as fontes de conhecimento oficiais e parâmetros de uso em pipelines RAG (Retrieval-Augmented Generation). |
+| **README.md** | Este documento, com propósito, instruções e referências. |
+
+---
+
+## 🧩 Sobre o arquivo `eva-config.yaml`
+
+O arquivo `eva-config.yaml` serve como **guia técnico para integrar a EVA a um ambiente de RAG (Retrieval-Augmented Generation)** — ou seja, sistemas que combinam **IA generativa + fontes oficiais de conhecimento**.
+
+### 📄 O que ele contém
+- Identidade, tom e limites éticos da EVA (persona).  
+- Lista de **fontes oficiais confiáveis**, como o site do MPSP e o canal 180.  
+- Políticas de recuperação de dados (modo híbrido: semântico + palavras-chave).  
+- Sugestões de configuração para:
+  - **Azure OpenAI**  
+  - **Copilot Studio (Teams)**  
+  - **LangChain / LlamaIndex**  
+
+### 🧠 Para que serve
+- Centralizar as **configurações éticas e técnicas** do agente.  
+- Garantir que a EVA consulte apenas **fontes oficiais e seguras**.  
+- Facilitar a reprodutibilidade em diferentes plataformas.  
+- Padronizar o comportamento da assistente em ambientes corporativos, educacionais ou sociais.
+
+### ⚙️ Como utilizar
+
+| Ambiente | Uso recomendado |
+|-----------|----------------|
+| **Azure OpenAI / AI Search** | Carregue o `eva-config.yaml` como referência de metadados e conecte as URLs listadas como *Data Sources*. Use o conteúdo de `eva-systemprompt.md` no campo `system`. |
+| **Microsoft Copilot Studio** | Insira o conteúdo de `eva-systemprompt.md` no System Prompt e cadastre as URLs de fontes como base de conhecimento conectada. |
+| **LangChain / LlamaIndex** | Parseie o YAML e injete suas fontes no pipeline RAG. Configure embeddings com FAISS, Chroma ou Azure Cognitive Search. |
+| **Ambientes locais (Python, Node.js, etc.)** | Carregue as configurações com: `config = yaml.safe_load(open("eva-config.yaml"))` e use-as no fluxo de inicialização do agente. |
 
 ---
 
 ## 🏗️ Como usar o prompt na construção de agentes internos
 
-A **EVA** pode ser integrada em soluções corporativas para promover **acolhimento, diversidade e segurança psicológica**.
+A **EVA** pode ser usada como base para criar **assistentes corporativos** que apoiem políticas de diversidade, inclusão e segurança psicológica.
 
-### 💼 Exemplos de uso corporativo
-
+### 💼 Exemplos práticos
 1. **Copilot Studio (Microsoft Teams)**  
-   - Cole o conteúdo de `eva-systemprompt.md` na seção de *System Instructions*.  
-   - Configure gatilhos como “preciso conversar”, “não me sinto segura”, “sofri assédio”.  
-   - Personalize a integração com canais internos de apoio, RH e compliance.  
+   - Cole o conteúdo de `eva-systemprompt.md` no campo de *System Instructions*.  
+   - Configure gatilhos como “preciso conversar”, “não me sinto segura”, “quero relatar algo”.  
+   - Conecte o `eva-config.yaml` como base de conhecimento.  
 
 2. **Azure OpenAI / API interna**  
-   - Utilize o conteúdo de `eva-systemprompt.md` no campo `system` do modelo GPT.  
-   - Combine com políticas internas e canais de denúncia seguros.  
+   - Use o prompt como `system` e o YAML para definir as fontes e parâmetros RAG.  
+   - Ideal para portais internos de RH, canais de denúncia ou programas de bem-estar.  
 
-3. **Slack, Teams ou Intranet corporativa**  
-   - Configure o prompt como camada de contexto base.  
-   - Integre formulários anônimos ou encaminhamentos automáticos.  
-
----
-
-## 🔗 Como incluir sites oficiais como base de conhecimento
-
-Para que a EVA possa oferecer **informações atualizadas e confiáveis**, recomenda-se integrar **fontes oficiais** diretamente no agente.
-
-### 🧩 Em agentes corporativos (RAG, Copilot Studio, OpenAI Embeddings)
-1. Crie uma camada de conhecimento (base de dados vetorial ou SharePoint) com os seguintes links:  
-   - `https://www.mpsp.mp.br/portal/page/portal/ViolenciaDomestica/Pacto-Ninguem-Se-Cala`  
-   - `https://www.gov.br/mdh/pt-br/assuntos/violencia-contra-as-mulheres`  
-   - `https://www.gov.br/centraldamulher`  
-   - `https://www.cnmp.mp.br/portal/violencia-domestica-e-familiar`  
-
-2. Configure o agente para **consultar esses conteúdos** antes de responder, mantendo a coerência com o System Prompt da EVA.  
-
-3. Atualize a base periodicamente (a cada 3 meses) para garantir que informações e contatos oficiais estejam atualizados.  
-
-> 💡 *Dica técnica:*  
-> Se estiver usando **Azure AI Search**, adicione esses sites como *data sources* conectados via *indexer* ou via *RAG embeddings pipeline*.
+3. **Plataformas de Chat Interno (Slack, Teams, Intranet)**  
+   - Utilize o `eva-config.yaml` para alimentar a camada de contexto e segurança.  
+   - Permita consultas às fontes oficiais antes de gerar respostas.  
 
 ---
 
-## 🧍‍♀️ Como usar o prompt de forma pessoal / individual
+## 🧍‍♀️ Uso pessoal / individual
 
-Se quiser conversar diretamente com a **EVA**, sem integração técnica, siga este passo:
+Se você quiser conversar com a **EVA** sem integração técnica:
 
-1. Abra um chat com uma IA conversacional (como ChatGPT, Claude, Copilot ou Gemini).  
-2. Copie **todo o conteúdo do arquivo `eva-systemprompt.md`**.  
-3. Cole no início da conversa e aguarde a confirmação de que o modelo entendeu seu papel.  
-4. Inicie o diálogo com frases como:  
-   - “EVA, posso conversar sobre algo que me deixou desconfortável?”  
-   - “Acho que vivi uma situação de assédio, mas não tenho certeza.”  
+1. Abra um chat em qualquer IA (ChatGPT, Gemini, Claude, Copilot etc.).  
+2. Copie **todo o conteúdo de `eva-systemprompt.md`**.  
+3. Cole no início da conversa.  
+4. Fale naturalmente:
+   - “EVA, posso desabafar sobre algo que aconteceu comigo?”  
+   - “Não sei se o que vivi foi assédio, pode me ajudar?”  
    - “Como posso buscar ajuda de forma segura?”  
 
-A EVA irá guiá-la de forma acolhedora, sem julgamentos, sugerindo caminhos seguros e canais oficiais de apoio.
+A EVA responderá com empatia, sigilo e orientação baseada em fontes oficiais.
 
-> ⚠️ **Importante:** EVA não substitui serviços psicológicos, jurídicos ou de emergência.  
-> Em casos de risco, ligue **180** (Central de Atendimento à Mulher) ou **190** (emergência).
+> ⚠️ **Importante:** EVA não substitui atendimento psicológico, jurídico ou policial.  
+> Em casos de emergência, ligue **180** (Central de Atendimento à Mulher) ou **190** (em risco imediato).
 
 ---
 
 ## ⚖️ Licença
 
 Este projeto é distribuído sob a **Licença MIT**, permitindo o uso, modificação e redistribuição livre.  
-Embora **a citação dos criadores não seja obrigatória**, ela é **fortemente recomendada** como forma de reconhecimento ético.
+Embora **a citação dos criadores não seja obrigatória**, ela é **fortemente recomendada** como reconhecimento ético.
 
 > **Autores:**  
 > 🧩 Reginaldo Miguel – Arquiteto de Solução  
@@ -123,18 +136,18 @@ Embora **a citação dos criadores não seja obrigatória**, ela é **fortemente
 
 ## 💜 Como contribuir
 
-1. Faça um fork do repositório  
-2. Adapte o prompt conforme seu contexto (mantendo a essência ética e o foco em acolhimento)  
-3. Envie suas melhorias via *pull request*  
+1. Faça um fork do repositório.  
+2. Adapte o prompt ou o YAML conforme seu contexto (mantendo a ética e o foco em acolhimento).  
+3. Envie melhorias via *pull request*.  
 
-Toda contribuição é bem-vinda — especialmente aquelas que fortaleçam o **uso responsável da IA em contextos de vulnerabilidade**.
+Toda contribuição é bem-vinda — especialmente aquelas que fortalecem o **uso responsável da IA em contextos de vulnerabilidade**.
 
 ---
 
 ## 📚 Fontes oficiais e referências
 
 - [Ministério Público do Estado de São Paulo – Pacto Ninguém se Cala](https://www.mpsp.mp.br/portal/page/portal/ViolenciaDomestica/Pacto-Ninguem-Se-Cala)  
-- [Cartilha do Pacto – PDF oficial do MPSP](https://www.mpsp.mp.br/portal/page/portal/ViolenciaDomestica/Pacto%20Ninguem%20Se%20Cala%20-%20Cartilha.pdf)  
+- [Cartilha oficial – Pacto Ninguém se Cala (PDF)](https://www.mpsp.mp.br/portal/page/portal/ViolenciaDomestica/Pacto%20Ninguem%20Se%20Cala%20-%20Cartilha.pdf)  
 - [Central de Atendimento à Mulher – Governo Federal (180)](https://www.gov.br/centraldamulher)  
 - [Ministério das Mulheres – Enfrentamento à Violência](https://www.gov.br/mdh/pt-br/assuntos/violencia-contra-as-mulheres)  
 - [Conselho Nacional do Ministério Público – Violência Doméstica e Familiar](https://www.cnmp.mp.br/portal/violencia-domestica-e-familiar)
